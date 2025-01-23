@@ -18,14 +18,14 @@ function Register() {
   const searchparams = new URLSearchParams(search);
   const redirect = searchparams.get("redirect") || "/";
 
-  useEffect(
-    function () {
-      if (currentUser) {
-        navigate(redirect);
-      }
-    },
-    [currentUser, navigate, redirect],
-  );
+  // useEffect(
+  //   function () {
+  //     if (currentUser) {
+  //       navigate(redirect);
+  //     }
+  //   },
+  //   [currentUser, navigate, redirect],
+  // );
   const [register, { isLoading, isError }] = useRegisterMutation();
   async function handleSubmit() {
     if (!email || !password || !username)
@@ -74,7 +74,7 @@ function Register() {
           </li>
 
           <li className="flex list-none flex-col gap-3">
-            <Button onClick={handleSubmit} disabled={!isError || isLoading}>
+            <Button onClick={handleSubmit} disabled={!isError && isLoading}>
               Register
             </Button>
           </li>

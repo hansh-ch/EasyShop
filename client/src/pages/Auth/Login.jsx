@@ -7,6 +7,7 @@ import Input from "../../UI/Input";
 import Label from "../../UI/Label";
 import { useLoginMutation } from "../../slices/userApiSlice";
 import { loginUser } from "../../slices/userSlice";
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,9 +23,9 @@ function Login() {
   const redirect = searchparams.get("redirect") || "/";
   useEffect(
     function () {
-      if (currentUser) {
-        navigate(redirect);
-      }
+      // if (currentUser) {
+      //   navigate(redirect);
+      // }
     },
     [currentUser, navigate, redirect],
   );
@@ -76,7 +77,7 @@ function Login() {
             />
           </li>
           <li className="flex list-none flex-col gap-3">
-            <Button onClick={handleSubmit} disabled={isLoading || !isError}>
+            <Button onClick={handleSubmit} disabled={isLoading && !isError}>
               Login
             </Button>
           </li>

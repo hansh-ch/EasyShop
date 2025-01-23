@@ -1,5 +1,5 @@
 import { apiSlice } from "./apiSlice";
-import { AUTH_URL } from "../utils/linkConstants";
+import { AUTH_URL, USERS_URL } from "../utils/linkConstants";
 
 export const userApiSlcie = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -24,8 +24,51 @@ export const userApiSlcie = apiSlice.injectEndpoints({
         body: "",
       }),
     }),
+    update: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/profile`,
+        method: "PUT",
+        body: data,
+      }),
+    }),
+
+    getUsers: builder.query({
+      query: () => ({
+        url: USERS_URL,
+      }),
+      providesTags: ["users"],
+      keepUnusedDataFor: 5,
+    }),
+    deleteUser: builder.mutation({
+      query: (id) => ({
+        url: `${USERS_URL}/${id}`,
+        method: "DELETE",
+        body: "",
+      }),
+    }),
+    getUserDetails: builder.query({
+      query: (id) => ({
+        url: `${USERS_URL}/${id}`,
+      }),
+      keepUnusedDataFor: 5,
+    }),
+    updateUserDetails: builder.mutation({
+      query: ({ data, id }) => ({
+        url: `${USERS_URL}/${id}`,
+        method: "PUT",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useRegisterMutation, useLogoutMutation } =
-  userApiSlcie;
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useLogoutMutation,
+  useUpdateMutation,
+  useDeleteUserMutation,
+  useGetUserDetailsQuery,
+  useGetUsersQuery,
+  useUpdateUserDetailsMutation,
+} = userApiSlcie;
