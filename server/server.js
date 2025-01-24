@@ -7,6 +7,7 @@ require("dotenv").config();
 
 const authRouter = require("./routes/authRoutes");
 const userRouter = require("./routes/userRoutes");
+const categoryRouter = require("./routes/categoryRoutes");
 
 const app = express();
 if (process.env.NODE_ENV === "development") {
@@ -41,6 +42,7 @@ app.get("/", (req, res) => {
 //==> ROUTES
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
+app.use("/api/category", categoryRouter);
 app.listen(port, () => {
   console.log(`App is running on port: ${port}`);
 });
