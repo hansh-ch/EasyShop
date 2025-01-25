@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
@@ -9,6 +10,7 @@ const authRouter = require("./routes/authRoutes");
 const userRouter = require("./routes/userRoutes");
 const categoryRouter = require("./routes/categoryRoutes");
 const productRouter = require("./routes/productRoutes");
+const uploadRouter = require("./routes/uploadRoutes");
 
 const app = express();
 if (process.env.NODE_ENV === "development") {
@@ -45,7 +47,10 @@ app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/category", categoryRouter);
 app.use("/api/product", productRouter);
+app.use("/api/upload", uploadRouter);
 
+//const __dirname = path.resolve();
+app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
 //==> SERVER START
 app.listen(port, () => {
   console.log(`App is running on port: ${port}`);
