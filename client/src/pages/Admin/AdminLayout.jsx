@@ -5,7 +5,7 @@ import Adminheader from "./Adminheader";
 
 function AdminLayout() {
   const { currentUser } = useSelector((state) => state.user);
-  console.log(currentUser);
+  // console.log(currentUser);
   //if (!currentUser.isAdmin) return <Navigate to="/login" />;
   return (
     <>
