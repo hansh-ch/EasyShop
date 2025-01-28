@@ -57,10 +57,10 @@ function Adminheader() {
           </Link>
           <Link
             className="flex items-center gap-2 text-white transition-transform hover:opacity-90"
-            to="/favorite"
+            to="/admin/products"
           >
             <AiOutlineHeart size={20} color="white" />
-            <span className="">Favorite</span>
+            <span className="">Products</span>
           </Link>
         </div>
         <ul className="hidden items-center gap-4 transition-all lg:flex">

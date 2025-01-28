@@ -11,6 +11,8 @@ import AdminLayout from "./pages/Admin/AdminLayout";
 import UserList from "./pages/Admin/UserList";
 import EditUser from "./pages/Admin/EditUser";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
+import ProductList from "./pages/Admin/Product/ProductList";
+import UpdateProduct from "./pages/Admin/Product/UpdateProduct";
 function App() {
   return (
     <BrowserRouter>
@@ -26,6 +28,8 @@ function App() {
               <Route index element={<AdminDashboard />} />
               <Route path="userlist" element={<UserList />} />
               <Route path="user/edit/:id" element={<EditUser />} />
+              <Route path="products" element={<ProductList />} />
+              <Route path="products/update/:id" element={<UpdateProduct />} />
             </Route>
           </Route>
         </Route>
